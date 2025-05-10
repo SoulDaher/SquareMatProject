@@ -6,7 +6,6 @@
 
 namespace matlib {
 
-// Constructors and Destructor
 SquareMat::SquareMat(int size) : size(size) {
     if (size <= 0) throw "Invalid matrix size";
     allocate();
@@ -21,7 +20,6 @@ SquareMat::~SquareMat() {
     free();
 }
 
-// Assignment operator
 SquareMat& SquareMat::operator=(const SquareMat& other) {
     if (this != &other) {
         if (size != other.size) {
@@ -34,7 +32,6 @@ SquareMat& SquareMat::operator=(const SquareMat& other) {
     return *this;
 }
 
-// Helper methods
 void SquareMat::allocate() {
     data = new double*[size];
     for (int i = 0; i < size; ++i)
@@ -53,7 +50,7 @@ void SquareMat::copyData(const SquareMat& other) {
             data[i][j] = other.data[i][j];
 }
 
-// Index operators
+
 double* SquareMat::operator[](int index) {
     return data[index];
 }
@@ -62,7 +59,6 @@ const double* SquareMat::operator[](int index) const {
     return data[index];
 }
 
-// Helper method for sum
 double SquareMat::sum() const {
     double total = 0;
     for (int i = 0; i < size; ++i)
@@ -71,7 +67,7 @@ double SquareMat::sum() const {
     return total;
 }
 
-// Arithmetic operators
+
 SquareMat SquareMat::operator+(const SquareMat& other) const {
     if (size != other.size) throw "Matrix sizes do not match for addition.";
     SquareMat result(size);
@@ -150,7 +146,7 @@ SquareMat SquareMat::operator^(int power) const {
     return result;
 }
 
-// Compound assignment operators
+
 SquareMat& SquareMat::operator+=(const SquareMat& other) { return *this = *this + other; }
 SquareMat& SquareMat::operator-=(const SquareMat& other) { return *this = *this - other; }
 SquareMat& SquareMat::operator*=(const SquareMat& other) { return *this = *this * other; }
@@ -159,7 +155,7 @@ SquareMat& SquareMat::operator/=(double scalar) { return *this = *this / scalar;
 SquareMat& SquareMat::operator%=(int scalar) { return *this = *this % scalar; }
 SquareMat& SquareMat::operator%=(const SquareMat& other) { return *this = *this % other; }
 
-// Unary operators
+
 SquareMat SquareMat::operator-() const {
     SquareMat result(size);
     for (int i = 0; i < size; ++i)
@@ -187,7 +183,7 @@ double SquareMat::operator!() const {
     throw "Determinant not implemented for size > 3.";
 }
 
-// Comparison operators
+
 bool SquareMat::operator==(const SquareMat& other) const { return sum() == other.sum(); }
 bool SquareMat::operator!=(const SquareMat& other) const { return !(*this == other); }
 bool SquareMat::operator<(const SquareMat& other) const { return sum() < other.sum(); }
@@ -195,7 +191,7 @@ bool SquareMat::operator>(const SquareMat& other) const { return sum() > other.s
 bool SquareMat::operator<=(const SquareMat& other) const { return sum() <= other.sum(); }
 bool SquareMat::operator>=(const SquareMat& other) const { return sum() >= other.sum(); }
 
-// Output operator
+
 std::ostream& operator<<(std::ostream& os, const SquareMat& mat) {
     for (int i = 0; i < mat.size; ++i) {
         for (int j = 0; j < mat.size; ++j)
@@ -204,7 +200,7 @@ std::ostream& operator<<(std::ostream& os, const SquareMat& mat) {
     }
     return os;
 }
-// Prefix increment
+
 SquareMat& SquareMat::operator++() {
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
@@ -214,14 +210,14 @@ SquareMat& SquareMat::operator++() {
     return *this;
 }
 
-// Postfix increment
+
 SquareMat SquareMat::operator++(int) {
     SquareMat temp(*this);
     ++(*this);
     return temp;
 }
 
-// Prefix decrement
+
 SquareMat& SquareMat::operator--() {
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
@@ -231,7 +227,7 @@ SquareMat& SquareMat::operator--() {
     return *this;
 }
 
-// Postfix decrement
+
 SquareMat SquareMat::operator--(int) {
     SquareMat temp(*this);
     --(*this);
@@ -240,4 +236,4 @@ SquareMat SquareMat::operator--(int) {
 
 
 
-} // namespace matlib
+} 
