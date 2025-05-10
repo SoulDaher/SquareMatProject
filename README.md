@@ -16,11 +16,17 @@ A C++ implementation of a square matrix class (`SquareMat`) that supports a vari
 
 ## Project Structure
 ├── SquareMat.hpp # Matrix class definition
+
 ├── SquareMat.cpp # Matrix class implementation
+
 ├── Main.cpp # Entry point (optional)
+
 ├── test.cpp # Doctest unit tests
+
 ├──doctest.h #header-only framework
+
 ├── makefile # Build system
+
 └── README.md # This file
 
 
