@@ -1,4 +1,3 @@
-//souldaher210@gmail.com
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++11
 SRC = SquareMat.cpp
